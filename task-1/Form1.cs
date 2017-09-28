@@ -36,10 +36,10 @@ namespace task_1
                 {
                     image = new Bitmap(openDialog.FileName);
                     pictureBox1.Image = image;
-
                     g = Graphics.FromImage(pictureBox1.Image);
-
                     pictureBox1.Invalidate();
+                    Form1.ActiveForm.Width = image.Width;
+                    Form1.ActiveForm.Height = image.Height + menuStrip1.Height + panel1.Height;
                 }
                 catch
                 {
@@ -115,7 +115,7 @@ namespace task_1
                 var x = e.Location.X;
                 var y = e.Location.Y;
                 curPixel = (pictureBox1.Image as Bitmap).GetPixel(e.Location.X, e.Location.Y);
-                if (curPixel.ToArgb() != paletteColor.ToArgb())
+                if (radioButton1.Checked && curPixel.ToArgb() != paletteColor.ToArgb())
                 { 
                     paint(x, y, curPixel, paletteColor);
                     pictureBox1.Refresh();
