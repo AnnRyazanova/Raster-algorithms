@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Drawing.Imaging;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -128,9 +129,7 @@ namespace task_2
                     ((4 == prevDirection) && ((direction + 6) % 8 < 3)) ||
                     ((0 == direction) && (prevDirection < 3)) ||
                     ((4 == direction) && ((prevDirection + 4) % 8 < 3)))
-                {
                     points.Add(point);
-                }
                 x = x + dxs[direction];
                 y = y + dys[direction];
                 point = new Point(x, y);
@@ -140,25 +139,28 @@ namespace task_2
             b.UnlockBits(data);
             pictureBox1.Invalidate();
             points.Sort((l, r) => l.Y != r.Y ? l.Y - r.Y : l.X - r.X);
+			List<String> lines = new List<String>();
             for (int i = 0; i < points.Count; i += 2)
             {
-                if (points[i].Y != points[i + 1].Y)
-                {
-                    /* Should never happen. */
-                    /* But will. :( */
-                    i -= 1;
-                    continue;
-                }
                 var x0 = points[i].X + 1;
                 var y0 = points[i].Y;
                 var x1 = points[i + 1].X - 1;
                 var y1 = points[i + 1].Y;
-                if (x1 < x0) continue;
+				lines.Add("" + x0 + " " + y0);
+				lines.Add("" + x1 + " " + y1);
+				if (x1 < x0) continue;
                 if (x0 == x1)
                     graphics.DrawRectangle(Pens.Orange, x0, y0, 0.5f, 0.5f);
                 else
                     graphics.DrawLine(Pens.Orange, x0, y0, x1, y1);
             }
-        }
+			for (int i = 0; i < 100; ++i)
+			{
+				string filename = "output" + i + ".txt";
+				if (File.Exists(filename)) continue;
+				File.WriteAllLines(filename, lines);
+				break;
+			}
+		}
     }
 }
