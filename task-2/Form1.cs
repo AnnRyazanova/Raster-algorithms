@@ -25,7 +25,7 @@ namespace task_2
         {
             var dialog = new OpenFileDialog();
             dialog.Multiselect = false;
-            dialog.Filter = "images | *.png ; *.jpg";
+            dialog.Filter = "images|*.png;*.jpg";
             if (DialogResult.OK != dialog.ShowDialog()) return;
             var b = new Bitmap(dialog.FileName);
             var good_b = new Bitmap(b.Width, b.Height, PixelFormat.Format32bppRgb);
@@ -116,22 +116,49 @@ namespace task_2
             var dxs = new int[] { -1, -1,  0,  1,  1,  1,  0, -1 };
             var dys = new int[] {  0,  1,  1,  1,  0, -1, -1, -1 };
             var prevDirection = 2;
-            while (true)
+            Point point = new Point(0, 0);
+            do
             {
                 int direction = (prevDirection + 6) % 8;
                 while (filledColor == ColorAt(p, x + dxs[direction], y + dys[direction]))
                     direction = (direction + 1) % 8;
-                var thisPoint = new Point(x, y);
-                if (0 != points.Count && thisPoint == startPoint && 1 <= prevDirection && prevDirection <= 3) break;
-                points.Add(thisPoint);
-                p[y * bitmapWidth + x] = 0xff0000;
+                if (((5 <= prevDirection) && (prevDirection <= 7) && (1 <= direction) && (direction <= 3)) ||
+                    ((5 <= direction) && (direction <= 7) && (1 <= prevDirection) && (prevDirection <= 3)) ||
+                    ((0 == prevDirection) && ((direction + 2) % 8 < 3)) ||
+                    ((4 == prevDirection) && ((direction + 6) % 8 < 3)) ||
+                    ((0 == direction) && (prevDirection < 3)) ||
+                    ((4 == direction) && ((prevDirection + 4) % 8 < 3)))
+                {
+                    points.Add(point);
+                }
                 x = x + dxs[direction];
                 y = y + dys[direction];
-                prevDirection = direction;   
-            }
+                point = new Point(x, y);
+                points.Add(point);
+                prevDirection = direction;
+            } while (point != startPoint);
             b.UnlockBits(data);
             pictureBox1.Invalidate();
-            points.Sort((l, r) => l.Y != r.Y ? l.Y - r.Y : l.Y - r.Y);
+            points.Sort((l, r) => l.Y != r.Y ? l.Y - r.Y : l.X - r.X);
+            for (int i = 0; i < points.Count; i += 2)
+            {
+                if (points[i].Y != points[i + 1].Y)
+                {
+                    /* Should never happen. */
+                    /* But will. :( */
+                    i -= 1;
+                    continue;
+                }
+                var x0 = points[i].X + 1;
+                var y0 = points[i].Y;
+                var x1 = points[i + 1].X - 1;
+                var y1 = points[i + 1].Y;
+                if (x1 < x0) continue;
+                if (x0 == x1)
+                    graphics.DrawRectangle(Pens.Orange, x0, y0, 0.5f, 0.5f);
+                else
+                    graphics.DrawLine(Pens.Orange, x0, y0, x1, y1);
+            }
         }
     }
 }
