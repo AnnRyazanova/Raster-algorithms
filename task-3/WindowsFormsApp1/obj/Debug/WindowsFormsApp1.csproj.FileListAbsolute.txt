@@ -8,3 +8,12 @@ C:\Users\Tonip_000\source\repos\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.cspr
 C:\Users\Tonip_000\source\repos\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.CoreCompileInputs.cache
 C:\Users\Tonip_000\source\repos\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.exe
 C:\Users\Tonip_000\source\repos\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.pdb
+D:\_Documents\Visual Studio 2017\Projects\Raster-algorithms-master\task-3\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.exe.config
+D:\_Documents\Visual Studio 2017\Projects\Raster-algorithms-master\task-3\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.exe
+D:\_Documents\Visual Studio 2017\Projects\Raster-algorithms-master\task-3\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.pdb
+D:\_Documents\Visual Studio 2017\Projects\Raster-algorithms-master\task-3\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csprojResolveAssemblyReference.cache
+D:\_Documents\Visual Studio 2017\Projects\Raster-algorithms-master\task-3\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Form1.resources
+D:\_Documents\Visual Studio 2017\Projects\Raster-algorithms-master\task-3\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Properties.Resources.resources
+D:\_Documents\Visual Studio 2017\Projects\Raster-algorithms-master\task-3\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.GenerateResource.Cache
+D:\_Documents\Visual Studio 2017\Projects\Raster-algorithms-master\task-3\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.exe
+D:\_Documents\Visual Studio 2017\Projects\Raster-algorithms-master\task-3\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.pdb

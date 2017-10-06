@@ -127,11 +127,11 @@ namespace WindowsFormsApp1
             this.pictureBox1.Size = image.Size;
             pictureBox1.Image = image;
 
-            size = СreateListPoint("C:/Users/Tonip_000/source/repos/WindowsFormsApp1/max_contour.txt", l_p);
-            СreateListPoint("C:/Users/Tonip_000/source/repos/WindowsFormsApp1/contour1.txt", l_p);
-            СreateListPoint("C:/Users/Tonip_000/source/repos/WindowsFormsApp1/contour2.txt", l_p);
-            СreateListPoint("C:/Users/Tonip_000/source/repos/WindowsFormsApp1/contour3.txt", l_p);
-            СreateListPoint("C:/Users/Tonip_000/source/repos/WindowsFormsApp1/contour4.txt", l_p);
+            size = СreateListPoint("max_contour.txt", l_p);
+            СreateListPoint("contour1.txt", l_p);
+            СreateListPoint("contour2.txt", l_p);
+            СreateListPoint("contour3.txt", l_p);
+            СreateListPoint("contour4.txt", l_p);
             // label2.Text = l_p.Count.ToString();
             for (int i = 0; i < l_p.Count; i++)
             {
@@ -162,5 +162,10 @@ namespace WindowsFormsApp1
                 }
             }
         }
-    }
+
+		private void pictureBox1_Click(object sender, EventArgs e)
+		{
+
+		}
+	}
 }
